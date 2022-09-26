@@ -1,0 +1,30 @@
+apiVersion: fission.io/v1
+kind: Environment
+metadata:
+  creationTimestamp: null
+  name: payment-order-ouroinvest-env
+  namespace: default
+spec:
+  builder:
+    command: build
+    image: nexus.sigame.com.br/fission-builder-3.8:0.0.1
+  imagepullsecret: "nexus-v3"
+  keeparchive: false
+  resources: {}
+  runtime:
+    image: nexus.sigame.com.br/fission-async:0.1.7
+    podspec:
+      containers:
+        - name: payment-order-ouroinvest-env
+          env:
+          - name: BIFROST_KAFKA_BROKERS
+            value: "dtvm-users-files-dev"
+          - name: MONGO_CONNECTION_URL
+            value: "mongodb://jormungandr:LIwn1In32LdowPqma@172.30.10.75:41000/?authSource=admin&replicaSet=rslionx&readPreference=primary"
+          - name: MONGODB_DATABASE_NAME
+            value: "ebisu"
+          - name: MONGODB_PAYMENT_ORDER_COLLECTION
+            value: "forex_payment_order"
+          - name: ASGI_FRAMEWORK
+            value: "HYPERCORN"
+  version: 2
