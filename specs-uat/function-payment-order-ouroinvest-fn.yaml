@@ -1,0 +1,55 @@
+include:
+- ./func/*
+kind: ArchiveUploadSpec
+name: func-sVIr
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: payment-order-fx-fn-e863404b-9e79-4e93-8b82-dfc6e184299e
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+  environment:
+    name: payment-order-ouroinvest-env
+    namespace: default
+  source:
+    checksum: {}
+    type: url
+    url: archive://func-sVIr
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2022-09-26T09:41:58Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: payment-order-ouroinvest-fn
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: newdeploy
+      MaxScale: 3
+      MinScale: 1
+      SpecializationTimeout: 120
+      TargetCPUPercent: 80
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: payment-order-ouroinvest-env
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    functionName: main.payment_order_ouroinvest
+    packageref:
+      name: payment-order-fx-fn-e863404b-9e79-4e93-8b82-dfc6e184299e
+      namespace: default
+  requestsPerPod: 10000
+  resources: {}
