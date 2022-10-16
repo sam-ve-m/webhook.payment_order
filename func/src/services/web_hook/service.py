@@ -1,6 +1,6 @@
 # PROJECT IMPORTS
 from src.domain.validator.webhook.validator import WebHookMessage
-from src.trasnport.bifrost.transport import BifrostTransport
+from src.transport.bifrost.transport import BifrostTransport
 from src.repositories.payment_order.repository import PaymentOrderRepository
 
 
