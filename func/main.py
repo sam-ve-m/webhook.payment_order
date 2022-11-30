@@ -15,6 +15,7 @@ from src.services.web_hook.service import ForexAccountService
 
 async def payment_order_ouroinvest() -> flask.Response:
     hook_request = flask.request.json
+    Gladsheim.info(message="Body received", hook_request=hook_request)
     try:
         webhook_message = WebHookMessage.from_request(request_body=hook_request)
         service_response = await ForexAccountService.request_payment_order_process(webhook_message=webhook_message)
