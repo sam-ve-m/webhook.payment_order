@@ -28,4 +28,8 @@ spec:
             value: "forex_payment_order"
           - name: ASGI_FRAMEWORK
             value: "HYPERCORN"
+          - name: ETRIA_LOG_LEVEL
+            value: "INFO"
+          - name: ROOT_LOG_LEVEL
+            value: "INFO"
   version: 2
