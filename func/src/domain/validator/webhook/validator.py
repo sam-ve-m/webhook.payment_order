@@ -18,17 +18,15 @@ class WebHookMessage(BaseModel):
 
     @classmethod
     def from_request(cls, request_body: dict):
-        message = orjson.loads(request_body.get("mensagem"))
-
-        client_id = message.get("CodigoCliente")
-        account_id = message.get("CodigoConta")
-        payment_order_id = message.get("CodigoOrdemPagamento")
-        currency_id = message.get("CdMoeda")
-        currency_name = message.get("SimboloMoeda")
-        value = message.get("ValorMonetario")
-        register_date = message.get("DataCadastroOrdem")
-        income_date = message.get("DataRecebimento")
-        origin = message.get("Ordenante")
+        client_id = request_body.get("CodigoCliente")
+        account_id = request_body.get("CodigoConta")
+        payment_order_id = request_body.get("CodigoOrdemPagamento")
+        currency_id = request_body.get("CdMoeda")
+        currency_name = request_body.get("SimboloMoeda")
+        value = request_body.get("ValorMonetario")
+        register_date = request_body.get("DataCadastroOrdem")
+        income_date = request_body.get("DataRecebimento")
+        origin = request_body.get("Ordenante")
 
         return cls(
             client_id=client_id,
