@@ -12,7 +12,7 @@ spec:
   keeparchive: false
   resources: {}
   runtime:
-    image: nexus.sigame.com.br/fission-async:0.1.10
+    image: nexus.sigame.com.br/fission-async:0.1.11
     podspec:
       containers:
         - name: payment-order-ouroinvest-env
