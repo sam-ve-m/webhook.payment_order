@@ -13,15 +13,15 @@ spec:
   poolsize: 3
   resources: {}
   runtime:
-    image: nexus.sigame.com.br/fission-async:0.1.7
+    image: nexus.sigame.com.br/fission-async:0.1.10
     podspec:
       containers:
         - name: payment-order-ouroinvest-env
           env:
           - name: BIFROST_KAFKA_BROKERS
-            value: "dtvm-users-files-dev"
+            value: "cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
           - name: MONGO_CONNECTION_URL
-            value: "mongodb://jormungandr:LIwn1In32LdowPqma@172.30.10.75:41000/?authSource=admin&replicaSet=rslionx&readPreference=primary"
+            value: "mongodb://jormungandr:LIwn1In32LdowPqma@172.30.10.75:41000/?authSource=admin&replicaSet=rslionx&readPreference=primary&appname=jormungandr"
           - name: MONGODB_DATABASE_NAME
             value: "ebisu"
           - name: MONGODB_PAYMENT_ORDER_COLLECTION

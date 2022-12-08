@@ -33,7 +33,7 @@ class PaymentOrderRepository:
     @classmethod
     async def save_payment_order(cls,  webhook_message: WebHookMessage):
         try:
-            collection = cls.__get_collection()
+            collection = await cls.__get_collection()
             document_payload = webhook_message.dict()
             await collection.insert_one(document_payload)
         except Exception as error:
