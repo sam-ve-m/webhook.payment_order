@@ -10,7 +10,7 @@ class WebHookMessage(BaseModel):
     account_id: int
     payment_order_id: int
     currency_id: int
-    currency_name: int
+    currency_name: str
     value: float
     register_date: datetime
     income_date: datetime
